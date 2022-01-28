@@ -47,16 +47,16 @@ router.get("/findUpdateSave/:id",async(req,res)=>{
     } catch (error) {
         res.status(404).send({msg:"person is not found"})
 }
-)
+
 //find One by food
 router.get("/findone";async(req,res)=>{
     try {
-        const findFood=await person.find({favoriteFoods:"humberger"})
+        const findFood=await person.find({favoriteFoods:"humberger"});
         res.send(findFood)
     } catch (error) {
         res.status(400).send(Error.message)
     }
-})
+}
 //find one and update
 router.put("/findByIdAndUpdate")=async(req,res)=>{
     try {
@@ -76,11 +76,14 @@ router.delete("/personId");async(req,res)=>{
         
     }
 }
-
-
-
-    
-
-
+//delete many
+router.delete("/deleteMany",async(req,res)=>{
+    try {
+        const deletedPerson = await person.deleteMany({name:"Ghada"});
+        res.send(deletedPerson)
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
+})
 
 module.exports=router
